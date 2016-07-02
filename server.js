@@ -10,9 +10,10 @@ app.all('/*', function (request, response) {
                 <head>\
                     <meta charset="UTF-8">\
                     <title>Title</title>\
+                    <base href="/">\
             </head>\
             <body>\
-                <h1>Hello this is my mean app</h1>\
+                <div ui-view></div>\
                 <script src="bundle.js"></script>\
             </body>\
         </html>\
