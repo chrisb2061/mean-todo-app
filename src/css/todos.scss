@@ -1,0 +1,29 @@
+.c-todos{
+    &-createInput{
+      margin: 0 auto 5px;
+      width: 300px;
+    }
+
+    &-createButton{
+      display: block;
+      margin: 0 auto 20px;
+    }
+
+    &-task{
+
+        &--completed{
+            text-decoration: line-through;
+        }
+    }
+
+    &-updateInput{
+        margin: 0 auto 5px;
+        width: 300px;
+    }
+
+}
+
+th, td{
+    font-size: 20px;
+    text-align: center;
+}

@@ -1,4 +1,38 @@
-<div>
-    <a ui-sref="about">About</a>
+<div class="container">
+    <a ui-sref="about" class="nav-link">About</a>
     <h2>ToDo App</h2>
+
+    <form ng-submit="createTask()">
+        <input type="text" ng-model="createTaskInput" class="form-control c-todos-createInput" placeholder="What do I need to do?">
+        <button class="btn btn-success c-todos-createButton">Create Task</button>
+    </form>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Completed</th>
+            <th>Task</th>
+            <th>Actions</th>
+        </tr>
+        <tr ng-repeat="todo in todos">
+            <!--
+                ng-checked Sets the checked attribute on the element, if the expression inside ngChecked true.
+                ng-click is a click handeler that will run js
+                ng-class adds class name if true
+            -->
+            <td><input type="checkbox" class="c-todos-checkBox" ng-checked="todo.isCompleted" ng-click="onCompletedClick(todo)" /></td>
+            <td>
+                <span ng-if="!todo.isEditing" class="c-todos-task" ng-class="{'c-todos-task--completed': todo.isCompleted}">{{todo.task}}</span>
+                <form ng-if="todo.isEditing" ng-submit="updateTask()">
+                    <input type="text" class="form-control c-todos-updateInput" ng-value="todo.task" ng-model="todo.updatedTask" />
+                </form>
+            </td>
+            <td>
+                <button ng-if="!todo.isEditing" class="btn btn-info" ng-click="onEditClick(todo)">Edit</button>
+                <button ng-if="!todo.isEditing" class="btn btn-danger" ng-click="deleteTask(todo)">Delete</button>
+
+                <button ng-if="todo.isEditing" class="btn btn-default"ng-click="udpateTask(todo)">Save</button>
+                <button ng-if="todo.isEditing" class="btn btn-primary" ng-click="cancelEditing(todo)">Cancel</button>
+            </td>
+        </tr>
+    </table>
 </div>
